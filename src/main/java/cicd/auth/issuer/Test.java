@@ -140,3 +140,39 @@ public class DataController {
      */
 
 }
+
+
+
+/*
+
+@Bean
+    public RegisteredClientRepository registeredClientRepository() {
+        return new RegisteredClientRepository() {
+            @Override
+            public RegisteredClient findById(String id) {
+                return null;
+            }
+
+            @Override
+            public RegisteredClient findByClientId(String clientId) {
+                String vaultKey = clientId + ".auth";
+                String clientSecret = vaultSecrets.get(vaultKey);
+                if (clientSecret == null) {
+                    logger.warn("No secret found for clientId: {} with key: {}", clientId, vaultKey);
+                    return null;
+                }
+
+                logger.info("Fetched secret for clientId: {} from vault secrets", clientId);
+
+                return RegisteredClient.withId(UUID.randomUUID().toString())
+                        .clientId(clientId)
+                        .clientSecret("{noop}" + clientSecret)
+                        .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                        .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+                        .scope("read")
+                        .scope("write")
+                        .build();
+            }
+        };
+    }
+ */
